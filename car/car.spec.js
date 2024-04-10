@@ -1,4 +1,5 @@
 // Test away!
+const Car = require("./car");
 function foo() {
   return "the foo";
 }
@@ -20,6 +21,19 @@ describe("our first tests", () => {
 describe("foo function", () => {
   test("foo returns the foo", () => {
     expect(foo()).toBe("the foo");
-    expect(foo()).toHaveLength(7)
+    expect(foo()).toHaveLength(7);
+  });
+  describe("Car class", () => {
+    test("it is defined", () => {
+      expect(Car).toBeDefined();
+      expect(Car).toBeInstanceOf(Function);
+    });
+    test("has model and make", () => {
+      const prius = new Car("toyota", "prius");
+      expect(prius).toHaveProperty("make");
+      expect(prius).toHaveProperty("model");
+      expect(prius.make).toBeDefined();
+      expect(prius).toEqual({make: 'toyota', model: 'prius'})
+    });
   });
 });
